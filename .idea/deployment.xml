@@ -5,7 +5,7 @@
       <paths name="fuhao@47.102.112.240:2042">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/data/fuhao/PartialOrderPrunning/NAS-Lung" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

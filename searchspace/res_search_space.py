@@ -8,13 +8,16 @@ from models.cnn_res import ConvRes
 
 
 class ResSearchSpace:
+    """
+    search class
+    """
     def __init__(self, channel_range, max_depth, min_depth, trained_data_path, test_data_path, fold, batch_size,
-                 logging, input_shape, use_gpu, gpu_id, criterion, lr, save_module_path, num_works, epoch,sub):
+                 logging, input_shape, use_gpu, gpu_id, criterion, lr, save_module_path, num_works, epoch):
         self.lr = lr
         self.epoch = epoch
         self.num_works = num_works
         self.fold = fold
-        self.sub = sub
+        # self.sub = sub
         self.save_module_path = save_module_path
         self.max_depth = max_depth
         self.min_depth = min_depth
@@ -28,28 +31,40 @@ class ResSearchSpace:
         self.trained_module_acc_lat = np.empty((0, 3))
         # self.trained_module_acc_lat = [module_config,acc,lat]
         self.pruned_module = []
+        # initialize all architecture set
         self.untrained_module = get_all_search_space(min_len=min_depth, max_len=max_depth, channel_range=channel_range)
-        self.train_loader, self.test_loader = load_data(trained_data_path, test_data_path, self.sub, batch_size,
+        # load data set
+        self.train_loader, self.test_loader = load_data(trained_data_path, test_data_path, self.fold, batch_size,
                                                         self.num_works)
         self.trained_yw = []
-        self.save_module_path = save_module_path + 'log' + str(self.fold)
+        self.save_module_path = save_module_path
         self.trained_yw_and_module = []
         if not os.path.isdir(self.save_module_path):
             os.mkdir(self.save_module_path)
 
     def random_generate(self):
+        """
+        get untrained model config
+
+        :return: model config
+        """
         count = self.untrained_module.__len__()
         index = random.randint(0, count)
         return self.untrained_module[index]
 
     def main_method(self):
+        """
+        search main method
+        """
         B = []
         stable_time = 0
         repeat_time = 0
         while True:
+            # get untrained model
             config = self.random_generate()
             # config = [[512, 512, 512,512,512], [512, 512, 512,512,512], [512, 512, 512, 512,512]]
             self.untrained_module.remove(config)
+            # train model
             net = ConvRes(config)
             net_lat = get_module_lat(net, input_shape=self.input_shape)
             net = net_to_cuda(net, use_gpu=self.use_gpu, gpu_ids=self.gpu_id)
@@ -60,6 +75,7 @@ class ResSearchSpace:
             self.logging.info(f'config:{config}\nacc:{acc} lat:{net_lat}')
             del net
             self.trained_module_acc_lat = np.append(self.trained_module_acc_lat, [[config, acc, net_lat]], axis=0)
+            # prune model
             for module in self.trained_module_acc_lat:
                 yw = get_yw(self.trained_module_acc_lat, module)
                 if len(yw) != 0:

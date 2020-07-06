@@ -17,6 +17,7 @@ from models.cnn_res import *
 from torch.autograd import Variable
 import logging
 import numpy as np
+import ast
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.0002, type=float, help='learning rate')
