@@ -1,7 +1,8 @@
 # NAS-Lung
+
 > 3D NAS for Pulmonary Nodules Classification
 >
-> Jiang et al. Learning Efficient, Explainable and Discriminative Representations for Pulmonary Nodules Classification. (under review)
+> Jiang et al. Learning Efficient, Explainable and Discriminative Representations for Pulmonary Nodules Classification. (Accept)
 
 ## Architecture
 
@@ -9,7 +10,7 @@
 
 ## Results
 
-### NASLung9
+### NASLung
 
 | model               | Accu. | Sens. | Spec. | F1 Score | para.(M) |
 | ------------------- | ----- | ----- | ----- | -------- | -------- |
@@ -19,45 +20,49 @@
 | DeepLung            | 90.44 | 81.42 | -     | -        | 141.57   |
 | AE-DPN              | 90.24 | 92.04 | 88.94 | 90.45    | 678.69   |
 |                     |       |       |       |          |          |
-| 3D-NAS (ours)       | 88.71 | 85.85 | 91.17 | 87.20    | 7.99     |
-| NASLung9 (ours)     | 91.72 | 90.21 | 92.85 | 90.81    | 63.53    |
+| 3D-NAS (ours)       | 88.83 | 87.20 | 90.12 | 87.50    | 0.14     |
+| NASLung (ours)      | 90.77 | 85.37 | 95.04 | 89.29    | 16.84    |
 
 ### 3D-NAS
 
-| Model   | Accu. | Sens. | Spec. | F1 Score | para. |
-| ------- | ----- | ----- | ----- | -------- | ----- |
-| Model-A | 88.71 | 85.85 | 91.17 | 87.20    | 7.99  |
-| Model-B | 88.16 | 87.11 | 88.61 | 86.90    | 8.05  |
-| Model-C | 88.46 | 83.83 | 92.15 | 86.68    | 8.05  |
-| Model-D | 87.59 | 83.64 | 90.52 | 85.85    | 0.63  |
-| Model-E | 88.27 | 82.41 | 92.92 | 86.17    | 7.79  |
-| Model-F | 88.13 | 87.86 | 88.89 | 86.88    | 11.28 |
-| Model-G | 88.61 | 85.41 | 91.40 | 87.02    | 11.33 |
-| Model-H | 87.94 | 83.79 | 91.10 | 86.13    | 11.28 |
-| Model-I | 88.11 | 86.08 | 89.73 | 86.64    | 11.33 |
+| Model    | Accu. | Sens. | Spec. | F1 Score | para. |
+| -------- | ----- | ----- | ----- | -------- | ----- |
+| Model-1  | 88.83 | 87.20 | 90.12 | 87.50    | 0.14  |
+| Model-2  | 88.42 | 84.38 | 91.46 | 86.67    | 2.61  |
+| Model-3  | 88.17 | 84.44 | 91.60 | 86.50    | 3.90  |
+| Model-4  | 88.13 | 83.20 | 92.28 | 86.30    | 2.54  |
+| Model-5  | 87.97 | 83.72 | 91.31 | 86.22    | 0.43  |
+| Model-6  | 87.77 | 83.67 | 91.00 | 86.03    | 0.22  |
+| Model-7  | 87.76 | 84.14 | 89.79 | 85.98    | 0.86  |
+| Model-8  | 88.00 | 82.43 | 92.69 | 85.97    | 4.02  |
+| Model-9  | 88.04 | 78.01 | 96.09 | 85.36    | 4.06  |
+| Model-10 | 87.22 | 82.70 | 90.92 | 85.32    | 0.24  |
 
 ## Prerequisites
 
-* Linux or similar environment
-* Python 3.7
-* Pytorch 0.4.1
-* NVIDIA GPU + CUDA CuDNN
+- Linux or similar environment
+- Python 3.7
+- Pytorch 0.4.1
+- NVIDIA GPU + CUDA CuDNN
 
 ## Getting Started
 
 ### Installation
 
-* Clone this repo:
-    ```shell script
-    git clone https://github.com/fei-hdu/NAS-Lung
-    cd NAS-Lung
-    ```
-* Install PyTorch 0.4+ and torchvision from http://pytorch.org and other dependencies (e.g., visdom and dominate). You can install all the dependencies by
+- Clone this repo:
 
-    ```shell script
-    pip install -r requirments.txt
-    ```
-* Download Dataset [LIDC-IDRI](https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI)
+  ```shell script
+  git clone https://github.com/fei-hdu/NAS-Lung
+  cd NAS-Lung
+  ```
+
+- Install PyTorch 0.4+ and torchvision from [Pytorch](http://pytorch.org) and other dependencies (e.g., visdom and dominate). You can install all the dependencies by
+
+  ```shell script
+  pip install -r requirments.txt
+  ```
+
+- Download Dataset [LIDC-IDRI](https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI)
 
 ### Neural Architecture Search
 
@@ -67,19 +72,21 @@ python search_main.py --train_data_path {train_data_path}  --test_data_path {tes
 
 ### Train/Test
 
-* Train a model
-    ```shell script
-    sh run_training.sh
-    ```
+- Train a model
 
-* Test a model
-    ```shell script
-    python test.py --test_data_path {test_data_path} --preprocess_path {preprocess_path} --model_path {model_path}
-    ```
+  ```shell script
+  sh run_training.sh
+  ```
+
+- Test a model
+
+  ```shell script
+  python test.py --test_data_path {test_data_path} --preprocess_path {preprocess_path} --model_path {model_path}
+  ```
 
 ### DataSet
 
-* [LIDC-IDRI](https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI)
+- [LIDC-IDRI](https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI)
 
 ### Model Result
 
@@ -87,8 +94,8 @@ python search_main.py --train_data_path {train_data_path}  --test_data_path {tes
 
 ### Training/Test Tips
 
-- Best practice for training and testing your models. 
-- Feel free to ask any questions about ***coding***. **Fuhao Shen, ``1048532267sfh@gmail.com``**
+- Best practice for training and testing your models.
+- Feel free to ask any questions about **_coding_**. **Fuhao Shen, `1048532267sfh@gmail.com`**
 
 ## Acknowledgement
 
@@ -96,7 +103,7 @@ python search_main.py --train_data_path {train_data_path}  --test_data_path {tes
 
 ## Selected References
 
-- S. Armato III, G. et al., Data from **LIDC-IDRI**, The Cancer Imaging Archivedoi:http://doi.org/10.7937/K9/TCIA.2015.LO9QL9SX. URL https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI.
+- S. Armato III, G. et al., Data from **LIDC-IDRI**, The Cancer Imaging . [LIDC-IDRI](http://doi.org/10.7937/K9/TCIA.2015.LO9QL9SX).
 - X. Li, Y. Zhou, Z. Pan, J. Feng, **Partial order pruning**: For best speed/accuracy trade-off in neural architecture search (2019) 9145–9153.
 - S. Woo, J. Park, J.-Y. Lee, I. So Kweon, **CBAM**: Convolutional block attention module, in: Proceedings of the European Conference on Computer Vision (ECCV), 2018, pp. 3–19.
 - W. Liu, Y. Wen, Z. Yu, M. Li, B. Raj, L. Song, **Sphereface**: Deep hypersphere embedding for face recognition, in: The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017.
