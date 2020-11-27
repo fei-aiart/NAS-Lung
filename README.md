@@ -2,7 +2,7 @@
 
 > 3D NAS for Pulmonary Nodules Classification
 >
-> Jiang et al. Learning Efficient, Explainable and Discriminative Representations for Pulmonary Nodules Classification. (Accept)
+> Hanliang Jiang, Fuhao Shen, Fei Gao*, Weidong Han. Learning Efficient, Explainable and Discriminative Representations for Pulmonary Nodules Classification. Pattern Recognition, 2020. (Accepted)
 
 ## Architecture
 
@@ -20,10 +20,9 @@
 | DeepLung            | 90.44 | 81.42 | -     | -        | 141.57   |
 | AE-DPN              | 90.24 | 92.04 | 88.94 | 90.45    | 678.69   |
 |                     |       |       |       |          |          |
-| 3D-NAS (ours)       | 88.83 | 87.20 | 90.12 | 87.50    | 0.14     |
-| NASLung (ours)      | 90.77 | 85.37 | 95.04 | 89.29    | 16.84    |
+| **NASLung (ours)**  | 90.77 | 85.37 | 95.04 | 89.29    | 16.84    |
 
-### 3D-NAS
+### Searched 3D Networks
 
 | Model    | Accu. | Sens. | Spec. | F1 Score | para. |
 | -------- | ----- | ----- | ----- | -------- | ----- |
