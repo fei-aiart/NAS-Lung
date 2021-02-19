@@ -2,9 +2,24 @@
 
 > **3D Neural Architecture Search (NAS) for Pulmonary Nodules Classification**
 >
-> Hanliang Jiang, Fuhao Shen, Fei Gao\*, Weidong Han. *Learning Efficient, Explainable and Discriminative Representations for Pulmonary Nodules Classification*. Pattern Recognition, 107825, 2021. (Accepted)
+> Hanliang Jiang, Fuhao Shen, Fei Gao\*, Weidong Han. *Learning Efficient, Explainable and Discriminative Representations for Pulmonary Nodules Classification*. Pattern Recognition, 113: 107825, 2021.
 >
-> [[Paper@PR]](https://www.sciencedirect.com/science/article/pii/S0031320321000121) [[Code@Github]](https://github.com/fei-hdu/NAS-Lung/issues/3)
+> ```latex
+> @article{Jiang2021naslung,
+> author = {Hanliang Jiang and Fuhao Shen and Fei Gao and Weidong Han},
+> title = {Learning efficient, explainable and discriminative representations for pulmonary nodules classification},
+> journal = {Pattern Recognition},
+> volume = {113},
+> pages = {107825},
+> year = {2021},
+> issn = {0031-3203},
+> doi = {https://doi.org/10.1016/j.patcog.2021.107825},
+> }
+> ```
+>
+> [[Paper@PR]](https://www.sciencedirect.com/science/article/pii/S0031320321000121) [[Paper@arxiv]](https://arxiv.org/abs/2101.07429) [[Code@Github]](https://github.com/fei-hdu/NAS-Lung/issues/3)
+
+
 
 ## Architecture
 
